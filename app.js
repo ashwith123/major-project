@@ -32,7 +32,6 @@ app.get("/", (req, res) => {
 //index rout
 app.get("/listing", async (req, res) => {
   let alllistings = await listing.find({});
-  console.log(alllistings);
   res.render("./listings/index.ejs", { alllistings });
 });
 //show rout
@@ -40,6 +39,19 @@ app.get("/listing/:id", async (req, res) => {
   let { id } = req.params;
   let alllistings = await listing.findById(id);
   res.render("./listings/show.ejs", { alllistings });
+});
+
+// new listing rout
+app.get("/listings/new", (req, res) => {
+  res.render("./listings/new.ejs");
+});
+
+//inserting
+
+app.post("/listings", async (req, res) => {
+  const newlisting = new listing(req.body.listing);
+  await newlisting.save();
+  res.redirect("/listing"); // Redirect to the index page after saving
 });
 
 // // this is adding an new list to listing module created in listing.js and reuired here
