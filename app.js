@@ -3,6 +3,7 @@ const app = express();
 
 const mongoose = require("mongoose");
 
+// checks if connection is successfull main is name of function in which connection is being given
 main()
   .then(() => {
     console.log("connection sucessul");
@@ -11,6 +12,7 @@ main()
     console.log(err);
   });
 
+//connecting mongoose
 async function main() {
   await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
