@@ -9,7 +9,9 @@
     <h3>all lisitngs</h3>
     <ul>
       <% alllistings.forEach(function(list) { %>
-      <li><%= list.title %></li>
+      <li>
+        <a href="/listing/<%= list._id %>"><%= list.title %></a>
+      </li>
       <% }); %>
     </ul>
   </body>

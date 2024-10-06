@@ -6,6 +6,7 @@ const path = require("path");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: true }));
 
 // checks if connection is successfull main is name of function in which connection is being given
 main()
@@ -28,11 +29,17 @@ app.listen(8080, (req, res) => {
 app.get("/", (req, res) => {
   res.send("working");
 });
-
+//index rout
 app.get("/listing", async (req, res) => {
   let alllistings = await listing.find({});
   console.log(alllistings);
   res.render("./listings/index.ejs", { alllistings });
+});
+//show rout
+app.get("/listing/:id", async (req, res) => {
+  let { id } = req.params;
+  let alllistings = await listing.findById(id);
+  res.render("./listings/show.ejs", { alllistings });
 });
 
 // // this is adding an new list to listing module created in listing.js and reuired here
