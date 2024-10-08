@@ -3,10 +3,12 @@ const app = express();
 const listing = require("./models/listing.js");
 const mongoose = require("mongoose");
 const path = require("path");
+const methodOverride = require("method-override");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 // checks if connection is successfull main is name of function in which connection is being given
 main()
@@ -49,9 +51,24 @@ app.get("/listings/new", (req, res) => {
 //inserting
 
 app.post("/listings", async (req, res) => {
-  const newlisting = new listing(req.body.listing);
+  const newlisting = new listing(req.body.listing); // important i wriiten this instead of let {title}=req.params
   await newlisting.save();
   res.redirect("/listing"); // Redirect to the index page after saving
+});
+
+//edit rout
+app.get("/listings/:id/edit", async (req, res) => {
+  let { id } = req.params;
+  const listingz = await listing.findById(id);
+  res.render("./listings/edit.ejs", { listingz });
+});
+
+// update rout
+
+app.put("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  await listing.findByIdAndUpdate(id, { ...req.body.listing });
+  res.redirect(`/listing/${id}`);
 });
 
 // // this is adding an new list to listing module created in listing.js and reuired here

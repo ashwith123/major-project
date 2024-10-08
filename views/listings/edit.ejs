@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>edit page</title>
+  </head>
+  <body>
+    <!-- here i used name =listingz[image]  instead of just image bcz wile i try to get data in app.get it will be easy-->
+    <h3>edit post usng this page</h3>
+    <form method="post" action="/listings/<%= listingz._id %>?_method=put">
+      <input name="listing[title]" value="<%= listingz.title %>" />
+      <br />
+      <textarea name="listing[description]">
+<%= listingz.description %></textarea
+      >
+      <br />
+      <input name="listing[image]" value="<%= listingz.image %>" />
+      <br />
+      <input name="listing[price]" value="<%= listingz.price %>" />
+      <br />
+      <input name="listing[country]" value="<%= listingz.country %>" />
+      <br />
+      <input name="listing[location]" value="<%= listingz.location %>" />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
