@@ -68,7 +68,16 @@ app.get("/listings/:id/edit", async (req, res) => {
 app.put("/listings/:id", async (req, res) => {
   let { id } = req.params;
   await listing.findByIdAndUpdate(id, { ...req.body.listing });
-  res.redirect(`/listing/${id}`);
+  res.redirect(`/listing`);
+});
+
+//delete rout
+
+app.delete("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  await listing.findByIdAndDelete(id);
+  console.log(id);
+  res.redirect("/listing");
 });
 
 // // this is adding an new list to listing module created in listing.js and reuired here
