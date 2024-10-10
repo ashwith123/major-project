@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>wanderlust</title>
-  </head>
-  <body>
-    <h3>All Listings</h3>
-    <ul>
-      <% alllistings.forEach(function(list) { %>
-      <li>
-        <a href="/listing/<%= list._id %>"><%= list.title %></a>
-      </li>
-      <% }); %>
-    </ul>
-    <form action="/listings/new" method="get">
-      <button>add new listing</button>
-    </form>
-  </body>
-</html>
+<% layout("/layouts/bolerplate")%>
+<body>
+  <h3>All Listings</h3>
+  <ul>
+    <% alllistings.forEach(function(list) { %>
+    <li>
+      <a href="/listing/<%= list._id %>"><%= list.title %></a>
+    </li>
+    <% }); %>
+  </ul>
+  <form action="/listings/new" method="get">
+    <button>add new listing</button>
+  </form>
+</body>
