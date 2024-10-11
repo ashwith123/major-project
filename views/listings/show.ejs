@@ -1,24 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>wander lust</title>
-  </head>
-  <body>
-    <h3>listing details</h3>
-    <ul>
-      <li><%=alllistings.title%></li>
-      <li><%=alllistings.description%></li>
-      <li>&#x20B9;<%= alllistings.price.toLocaleString("en-IN") %></li>
-      <li><%=alllistings.location%></li>
-      <li><%=alllistings.country%></li>
-    </ul>
-    <form action="/listings/<%= alllistings._id%>/edit" method="get">
-      <button>click to edit</button>
-    </form>
-    <form action="/listings/<%= alllistings._id%>?_method=DELETE" method="post">
-      <button>click to delete</button>
-    </form>
-  </body>
-</html>
+<% layout("/layouts/bolerplate")%>
+<body>
+  <h3>listing details</h3>
+  <ul>
+    <li><%=alllistings.title%></li>
+    <li><%=alllistings.description%></li>
+    <li>&#x20B9;<%= alllistings.price.toLocaleString("en-IN") %></li>
+    <li><%=alllistings.location%></li>
+    <li><%=alllistings.country%></li>
+  </ul>
+  <form action="/listings/<%= alllistings._id%>/edit" method="get">
+    <button>click to edit</button>
+  </form>
+  <form action="/listings/<%= alllistings._id%>?_method=DELETE" method="post">
+    <button>click to delete</button>
+  </form>
+</body>
