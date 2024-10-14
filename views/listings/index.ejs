@@ -1,14 +1,26 @@
 <% layout('layouts/bolerplate')%>
-<body>
-  <h3>All Listings</h3>
-  <ul>
-    <% alllistings.forEach(function(list) { %>
-    <li>
-      <a href="/listing/<%= list._id %>"><%= list.title %></a>
-    </li>
-    <% }); %>
-  </ul>
-  <!-- <form action="/listings/new" method="get">
-    <button>add new listing</button>
-  </form> -->
-</body>
+
+<h3>All Listings</h3>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
+  <% alllistings.forEach(function(list) { %>
+  <div class="col">
+    <a href="/listing/<%=list._id%>">
+      <div class="card" style="width: 20rem">
+        <img
+          class="card-img-top"
+          style="height: 20rem"
+          src="<%= list.image ? list.image.url : 'https://images.unsplash.com/photo-1525596662741-e94ff9f26de1?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'%>"
+          alt=" image not found "
+        />
+        <div class="card-body">
+          <p class="card-text">
+            <b> <%=list.title%></b><br />
+            <%= list.price.toLocaleString("en-IN") %>rs
+          </p>
+        </div>
+      </div></a
+    >
+  </div>
+  <% }); %>
+</div>
