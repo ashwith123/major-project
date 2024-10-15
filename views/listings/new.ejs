@@ -1,28 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>new listign</title>
-  </head>
-  <body>
+<% layout("/layouts/bolerplate")%>
+<body>
+  <div class="col-7 offset-2">
+    <h1>Create New listing</h1>
+
     <form method="post" action="/listings">
-      <input name="listing[title]" placeholder="enter title" />
-      <br />
-      <textarea
-        name="listing[description]"
-        placeholder="enter description"
-      ></textarea>
-      />
-      <br />
-      <input name="listing[image]" placeholder="enter image url" />
-      <br /><input name="listing[price]" placeholder="enter price" />
-      <br />
-      <input name="listing[country]" placeholder="enter title" />
-      <br />
-      <input name="listing[location]" placeholder="enter title" />
-      <br />
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          name="listing[title]"
+          class="form-control"
+          placeholder="enter title"
+          id="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          class="form-control"
+          name="listing[description]"
+          placeholder="enter description"
+          id="description"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="imgurl">Image URL</label>
+        <input
+          class="form-control"
+          name="listing[image]"
+          placeholder="enter image url"
+          id="imgurl"
+        />
+      </div>
+      <div class="row">
+        <div class="form-group col-4">
+          <label for="price">Price</label>
+          <input
+            name="listing[price]"
+            placeholder=" india"
+            class="form-control"
+            id="price"
+          />
+        </div>
+        <div class="form-group col-8">
+          <label for="country">Enter country name</label>
+          <input
+            name="listing[country]"
+            class="form-control"
+            placeholder="enter location"
+            id="country"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location">Enter location</label>
+        <input
+          class="form-control"
+          name="listing[location]"
+          placeholder="enter title"
+          id="location"
+        />
+      </div>
+
       <button>submit</button>
     </form>
-  </body>
-</html>
+  </div>
+</body>
